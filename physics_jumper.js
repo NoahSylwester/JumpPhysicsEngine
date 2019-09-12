@@ -56,7 +56,7 @@ var PhysicalObject = function(x, y, w, h)
       if (this.y < 200 && this.yVel < 0) {
         this.yVel = 0;
       }
-      if (this.y > 600 && this.yVel > 0) {
+      if (this.y > height - 40 && this.yVel > 0) {
         this.yVel = 0;
       }
           this.x += this.xVel;
@@ -75,12 +75,12 @@ var PhysicalObject = function(x, y, w, h)
               this.xVel += .7;
             }};
         
-          if (this.y < 600) {
+          if (this.y < height - 40) {
             this.y += this.yVel;
             this.yVel += .7;
           }
-          if (this.y >= 600) {
-            this.y = 600;
+          if (this.y >= height - 40) {
+            this.y = height - 40;
             if (upPressed) {
             this.yVel += -15;
             this.y += this.yVel;
