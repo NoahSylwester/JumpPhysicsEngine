@@ -12,8 +12,8 @@ var physicalObjects = [];
 // Initialise the canvas element and set it's width and height
 var canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = width - 20;
+    canvas.height = height + 20;
  
 // Append the canvas element to the HTML body
 document.body.appendChild(canvas);
@@ -47,10 +47,10 @@ var PhysicalObject = function(x, y, w, h)
     
     // Update the object's position for the next frame
     this.nextFrame = function() {
-      if (this.x > 800 && this.xVel > 0) {
+      if (this.x > width - 50 && this.xVel > 0) {
         this.xVel = 0;
       }
-      if (this.x < 50 && this.xVel < 0) {
+      if (this.x < 20 && this.xVel < 0) {
         this.xVel = 0;
       }
       if (this.y < 200 && this.yVel < 0) {
@@ -60,14 +60,14 @@ var PhysicalObject = function(x, y, w, h)
         this.yVel = 0;
       }
           this.x += this.xVel;
-          if (this.x < 800) {
+          if (this.x < width - 50) {
             if (rightPressed) {
             this.xVel += .7;
             }
             if (rightPressed === false && leftPressed === false && this.xVel > 0) {
               this.xVel += -.7;
             }};
-          if (this.x > 50) {
+          if (this.x > 20) {
             if (leftPressed) {
               this.xVel += -.7;
             }
@@ -110,7 +110,7 @@ var PhysicalObject = function(x, y, w, h)
 frameRender = function() 
 {
     // Clear view
-    context.clearRect(0, 0, width, height);
+    context.clearRect(0, 0, width, height + 20);
     
     // For each object in the physicalObjects array...
     for (var i = 0; i < physicalObjects.length; i++) {
